@@ -44,13 +44,13 @@ func (s *SearchBar) build() {
 		SetBorderColor(tcell.Color238).
 		SetTitleColor(tcell.Color250)
 
-	s.InputField.SetChangedFunc(func(text string) {
+	s.SetChangedFunc(func(text string) {
 		if s.onSearch != nil {
 			s.onSearch(text)
 		}
 	})
 
-	s.InputField.SetDoneFunc(func(key tcell.Key) {
+	s.SetDoneFunc(func(key tcell.Key) {
 		if key == tcell.KeyEsc || key == tcell.KeyEnter {
 			if s.onEscape != nil {
 				s.onEscape()

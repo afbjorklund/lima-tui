@@ -212,9 +212,9 @@ func (sd *ServerDetails) UpdateServer(server domain.Server) {
 		text += advancedText
 	}
 
-	sd.TextView.SetText(text)
+	sd.SetText(text)
 }
 
 func (sd *ServerDetails) ShowEmpty() {
-	sd.TextView.SetText("No servers match the current filter.")
+	sd.SetText("No servers match the current filter.")
 }

@@ -307,16 +307,18 @@ func addAuthOptions(parts *[]string, s domain.Server) {
 // addForwardingOptions adds agent and X11 forwarding options to the SSH command
 func addForwardingOptions(parts *[]string, s domain.Server) {
 	if s.ForwardAgent != "" {
-		if s.ForwardAgent == sshYes {
+		switch s.ForwardAgent {
+		case sshYes:
 			*parts = append(*parts, "-A")
-		} else if s.ForwardAgent == sshNo {
+		case sshNo:
 			*parts = append(*parts, "-a")
 		}
 	}
 	if s.ForwardX11 != "" {
-		if s.ForwardX11 == sshYes {
+		switch s.ForwardX11 {
+		case sshYes:
 			*parts = append(*parts, "-X")
-		} else if s.ForwardX11 == sshNo {
+		case sshNo:
 			*parts = append(*parts, "-x")
 		}
 	}

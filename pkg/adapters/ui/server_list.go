@@ -36,7 +36,7 @@ func NewServerList() *ServerList {
 }
 
 func (sl *ServerList) build() {
-	sl.List.ShowSecondaryText(false)
+	sl.ShowSecondaryText(false)
 	sl.List.SetBorder(true).
 		SetTitle(" Servers ").
 		SetTitleAlign(tview.AlignCenter).
@@ -47,7 +47,7 @@ func (sl *ServerList) build() {
 		SetSelectedTextColor(tcell.Color255).
 		SetHighlightFullLine(true)
 
-	sl.List.SetChangedFunc(func(index int, mainText string, secondaryText string, shortcut rune) {
+	sl.SetChangedFunc(func(index int, mainText string, secondaryText string, shortcut rune) {
 		if index >= 0 && index < len(sl.servers) && sl.onSelectionChange != nil {
 			sl.onSelectionChange(sl.servers[index])
 		}
@@ -56,20 +56,20 @@ func (sl *ServerList) build() {
 
 func (sl *ServerList) UpdateServers(servers []domain.Server) {
 	sl.servers = servers
-	sl.List.Clear()
+	sl.Clear()
 
 	for i := range servers {
 		primary, secondary := formatServerLine(servers[i])
 		idx := i
-		sl.List.AddItem(primary, secondary, 0, func() {
+		sl.AddItem(primary, secondary, 0, func() {
 			if sl.onSelection != nil {
 				sl.onSelection(sl.servers[idx])
 			}
 		})
 	}
 
-	if sl.List.GetItemCount() > 0 {
-		sl.List.SetCurrentItem(0)
+	if sl.GetItemCount() > 0 {
+		sl.SetCurrentItem(0)
 		if sl.onSelectionChange != nil {
 			sl.onSelectionChange(sl.servers[0])
 		}
@@ -77,7 +77,7 @@ func (sl *ServerList) UpdateServers(servers []domain.Server) {
 }
 
 func (sl *ServerList) GetSelectedServer() (domain.Server, bool) {
-	idx := sl.List.GetCurrentItem()
+	idx := sl.GetCurrentItem()
 	if idx >= 0 && idx < len(sl.servers) {
 		return sl.servers[idx], true
 	}

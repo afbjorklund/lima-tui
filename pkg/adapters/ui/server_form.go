@@ -523,7 +523,7 @@ func (sf *ServerForm) formatDetailedHelp(help *FieldHelp) string {
 
 func (sf *ServerForm) setupKeyboardShortcuts() {
 	// Set input capture for the main flex container
-	sf.Flex.SetInputCapture(func(event *tcell.EventKey) *tcell.EventKey {
+	sf.SetInputCapture(func(event *tcell.EventKey) *tcell.EventKey {
 		// Help panel is always visible - no toggle needed
 
 		// Check for Ctrl key combinations with regular keys

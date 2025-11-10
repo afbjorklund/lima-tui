@@ -282,7 +282,7 @@ func (t *tui) handleRefreshBackground() {
 	currentIdx := t.serverList.GetCurrentItem()
 	query := ""
 	if t.searchBar != nil {
-		query = t.searchBar.InputField.GetText()
+		query = t.searchBar.GetText()
 	}
 
 	t.showStatusTemp("Refreshing…")
@@ -299,7 +299,7 @@ func (t *tui) handleRefreshBackground() {
 		t.app.QueueUpdateDraw(func() {
 			t.serverList.UpdateServers(servers)
 			// Try to restore selection if still valid
-			if prevIdx >= 0 && prevIdx < t.serverList.List.GetItemCount() {
+			if prevIdx >= 0 && prevIdx < t.serverList.GetItemCount() {
 				t.serverList.SetCurrentItem(prevIdx)
 				if srv, ok := t.serverList.GetSelectedServer(); ok {
 					t.details.UpdateServer(srv)
@@ -539,7 +539,7 @@ func (t *tui) blurSearchBar() {
 func (t *tui) refreshServerList() {
 	query := ""
 	if t.searchBar != nil {
-		query = t.searchBar.InputField.GetText()
+		query = t.searchBar.GetText()
 	}
 	filtered, _ := t.serverService.ListServers(query)
 	sortServersForUI(filtered, t.sortMode)
