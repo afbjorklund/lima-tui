@@ -18,7 +18,7 @@ import (
 	"github.com/gdamore/tcell/v2"
 	"go.uber.org/zap"
 
-	"github.com/Adembc/lazyssh/internal/core/ports"
+	"github.com/afbjorklund/lima-tui/pkg/core/ports"
 	"github.com/rivo/tview"
 )
 
@@ -107,8 +107,8 @@ func (t *tui) buildComponents() *tui {
 
 func (t *tui) buildLayout() *tui {
 	t.left = tview.NewFlex().SetDirection(tview.FlexRow).
-		AddItem(t.searchBar, 3, 0, false).
-		AddItem(t.serverList, 0, 1, true)
+		AddItem(t.serverList, 0, 1, true).
+		AddItem(t.searchBar, 3, 0, false)
 
 	right := tview.NewFlex().SetDirection(tview.FlexRow).
 		AddItem(t.details, 0, 1, false)

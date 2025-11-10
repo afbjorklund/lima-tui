@@ -18,7 +18,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/Adembc/lazyssh/internal/core/domain"
+	"github.com/afbjorklund/lima-tui/pkg/core/domain"
 	"github.com/kevinburke/ssh_config"
 )
 

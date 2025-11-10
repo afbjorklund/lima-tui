@@ -19,11 +19,11 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/Adembc/lazyssh/internal/adapters/data/ssh_config_file"
-	"github.com/Adembc/lazyssh/internal/logger"
+	"github.com/afbjorklund/lima-tui/pkg/adapters/data/ssh_config_file"
+	"github.com/afbjorklund/lima-tui/pkg/logger"
 
-	"github.com/Adembc/lazyssh/internal/adapters/ui"
-	"github.com/Adembc/lazyssh/internal/core/services"
+	"github.com/afbjorklund/lima-tui/pkg/adapters/ui"
+	"github.com/afbjorklund/lima-tui/pkg/core/services"
 	"github.com/spf13/cobra"
 )
 
@@ -33,7 +33,7 @@ var (
 )
 
 func main() {
-	log, err := logger.New("LAZYSSH")
+	log, err := logger.New("LIMATUI")
 	if err != nil {
 		fmt.Println(err)
 		os.Exit(1)
@@ -57,7 +57,7 @@ func main() {
 
 	rootCmd := &cobra.Command{
 		Use:   ui.AppName,
-		Short: "Lazy SSH server picker TUI",
+		Short: "Lima (Linux Machines) TUI",
 		RunE: func(cmd *cobra.Command, args []string) error {
 			return tui.Run()
 		},

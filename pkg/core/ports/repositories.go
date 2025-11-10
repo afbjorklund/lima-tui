@@ -14,7 +14,7 @@
 
 package ports
 
-import "github.com/Adembc/lazyssh/internal/core/domain"
+import "github.com/afbjorklund/lima-tui/pkg/core/domain"
 
 type ServerRepository interface {
 	ListServers(query string) ([]domain.Server, error)

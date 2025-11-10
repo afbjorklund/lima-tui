@@ -18,7 +18,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/Adembc/lazyssh/internal/core/domain"
+	"github.com/afbjorklund/lima-tui/pkg/core/domain"
 	"github.com/gdamore/tcell/v2"
 	"github.com/rivo/tview"
 )
@@ -211,9 +211,6 @@ func (sd *ServerDetails) UpdateServer(server domain.Server) {
 	if hasAdvanced {
 		text += advancedText
 	}
-
-	// Commands list
-	text += "\n[::b]Commands:[-]\n  Enter: SSH connect\n  f: Port forward\n  x: Stop forwarding\n  c: Copy SSH command\n  g: Ping server\n  r: Refresh list\n  a: Add new server\n  e: Edit entry\n  t: Edit tags\n  d: Delete entry\n  p: Pin/Unpin"
 
 	sd.TextView.SetText(text)
 }

@@ -1,8 +1,6 @@
-module github.com/Adembc/lazyssh
+module github.com/afbjorklund/lima-tui
 
-go 1.24.6
-
-replace github.com/kevinburke/ssh_config => github.com/adembc/ssh_config v1.4.2
+go 1.24.0
 
 require (
 	github.com/atotto/clipboard v0.1.4
@@ -25,3 +23,5 @@ require (
 	golang.org/x/term v0.34.0 // indirect
 	golang.org/x/text v0.28.0 // indirect
 )
+
+replace github.com/kevinburke/ssh_config => github.com/afbjorklund/ssh_config v1.4.1-0.20251110171636-0a234f404344
