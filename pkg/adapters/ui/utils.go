@@ -93,8 +93,12 @@ func formatServerLine(s domain.Server) (primary, secondary string) {
 	if isFwd {
 		fCol = "[#A0FFA0]" + fCol + "[-]"
 	}
+	addr := s.Host
+	if s.Port != 22 {
+		addr += fmt.Sprintf(":%d", s.Port)
+	}
 	// Use a consistent color for alias; host/IP fixed width; then forwarding column
-	primary = fmt.Sprintf("%s [white::b]%-12s[-] [#AAAAAA]%-18s[-] %s [#888888]Last SSH: %s[-]  %s", icon, s.Alias, s.Host, fCol, humanizeDuration(s.LastSeen), renderTagBadgesForList(s.Tags))
+	primary = fmt.Sprintf("%s [white::b]%-12s[-] [#AAAAAA]%-18s[-] %s [#888888]Last SSH: %s[-]  %s", icon, s.Alias, addr, fCol, humanizeDuration(s.LastSeen), renderTagBadgesForList(s.Tags))
 	secondary = ""
 	return
 }
