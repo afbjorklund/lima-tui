@@ -141,6 +141,10 @@ func (t *tui) handleCopyCommand() {
 
 func (t *tui) handleTagsEdit() {
 	if server, ok := t.serverList.GetSelectedServer(); ok {
+		if server.Readonly {
+			t.showStatusTempColor(fmt.Sprintf("Read-only: %s is defined in %s", server.Alias, server.SourceFile), "#FFCC66")
+			return
+		}
 		t.showEditTagsForm(server)
 	}
 }
@@ -242,6 +246,10 @@ func (t *tui) handleServerSave(server domain.Server, original *domain.Server) {
 
 func (t *tui) handleServerDelete() {
 	if server, ok := t.serverList.GetSelectedServer(); ok {
+		if server.Readonly {
+			t.showStatusTempColor(fmt.Sprintf("Read-only: %s is defined in %s (cannot delete here)", server.Alias, server.SourceFile), "#FF6B6B")
+			return
+		}
 		t.showDeleteConfirmModal(server)
 	}
 }
